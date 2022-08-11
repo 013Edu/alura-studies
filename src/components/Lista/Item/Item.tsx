@@ -20,8 +20,8 @@ interface Props{
     console.log('item atual: ', { tarefas, tempo, selecionado, completado, id })
     return (
       <li
-        className={`item ${selecionado ? "itemSelecionado" : ''}`}
-        onClick={() => selecionarTarefa(
+        className={`item ${selecionado ? "itemSelecionado" : ''} ${completado ? "itemCompletado" : ''} `}
+        onClick={() => !completado && selecionarTarefa(
           {
             tarefas,
             tempo,
@@ -33,6 +33,7 @@ interface Props{
         >
         <h3>{tarefas}</h3>
         <span>{tempo}</span>
+        {completado && <span className="concluido"></span>}
       </li>
     )
   }
